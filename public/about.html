@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Metagastric Flavor Codex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0a2463;
+            --secondary-blue: #1e88e5;
+            --accent-blue: #64b5f6;
+            --light-blue: #e3f2fd;
+            --dark-blue: #051937;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: 0 4px 12px rgba(10, 36, 99, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fbff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(100, 181, 246, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(5, 25, 55, 0.85), rgba(10, 36, 99, 0.9)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-bottom: 4rem;
+        }
+
+        /* About Sections */
+        .about-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-blue);
+            display: inline-block;
+        }
+
+        .about-section h3 {
+            color: var(--primary-blue);
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 2rem 0;
+        }
+
+        .mission-box, .vision-box {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary-blue);
+        }
+
+        .mission-box h3, .vision-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--accent-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 70px;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(10, 36, 99, 0.2);
+        }
+
+        .team-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-name {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-desc {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .team-social a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .team-social a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .value-card:hover h4, .value-card:hover p {
+            color: white;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 15px;
+        }
+
+        .value-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: #555;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar-title {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .fact-box {
+            background-color: var(--light-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .fact-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .fact-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary-blue);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .fact-text {
+            color: #555;
+        }
+
+        .contact-box {
+            background-color: var(--light-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .contact-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-blue);
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-blue);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-blue);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .page-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .about-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Metagastric Flavor Codex</h1>
+                    <p>Culinary Alchemy & Gastronomic Wisdom</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms Of Privacy</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="cookies.html">Cookies Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h2>About the Metagastric Flavor Codex</h2>
+            <p>Discover the story behind our culinary revolution, the minds that shaped it, and the philosophy that guides every recipe and technique in our Codex.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content -->
+        <div class="about-content">
+            <div class="primary-content">
+                <!-- Our Story -->
+                <section class="about-section">
+                    <h2>Our Story</h2>
+                    <p>The Metagastric Flavor Codex was born from a simple observation: while countless cookbooks exist, very few teach the underlying principles that transform a cook into a culinary artist. In 2018, our founder, Chef Alistair Reed, began compiling notes from two decades of professional cooking, scientific research, and global culinary exploration.</p>
+                    
+                    <p>What started as a personal reference grew into a comprehensive system for understanding flavor at its most fundamental level. After three years of development, testing, and refinement, the first edition of the Metagastric Flavor Codex was released in 2021. Today, it represents over 35,000 words of original culinary content, serving both professional chefs and passionate home cooks worldwide.</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mission-box">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>To democratize advanced culinary knowledge by making the principles of flavor science, technique, and creativity accessible to all who wish to elevate their cooking beyond recipes.</p>
+                        </div>
+                        
+                        <div class="vision-box">
+                            <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                            <p>A world where every cook understands the "why" behind their actions, leading to more creative, sustainable, and satisfying culinary experiences for all.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Our Journey -->
+                <section class="about-section">
+                    <h2>Our Journey</h2>
+                    <p>The development of the Codex followed a rigorous path of research, experimentation, and validation:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2018</div>
+                            <div class="timeline-content">
+                                <h3>Conception & Research</h3>
+                                <p>Initial research phase, compiling decades of culinary experience, scientific studies on taste perception, and ethnographic studies of global cuisines.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2019</div>
+                            <div class="timeline-content">
+                                <h3>Framework Development</h3>
+                                <p>Creation of the Five Pillars of Flavor framework and the initial structure of the Codex. Over 200 recipe prototypes developed and tested.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020</div>
+                            <div class="timeline-content">
+                                <h3>Content Creation</h3>
+                                <p>Writing of the 35,000-word manuscript, photography of techniques and finished dishes, and development of instructional diagrams and charts.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021</div>
+                            <div class="timeline-content">
+                                <h3>Launch & Reception</h3>
+                                <p>Official release of the Metagastric Flavor Codex. Immediate recognition from culinary institutions and adoption by cooking schools worldwide.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-content">
+                                <h3>Expansion & Community</h3>
+                                <p>Launch of online platform, addition of interactive elements, and growth of global community of Codex practitioners sharing innovations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-content">
+                                <h3>Current Evolution</h3>
+                                <p>Ongoing updates with seasonal content, technique expansions, and integration of new culinary research into the living Codex framework.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Our Team -->
+                <section class="about-section">
+                    <h2>Meet Our Culinary Architects</h2>
+                    <p>The Codex is the product of collaboration between culinary professionals, scientists, writers, and artists who share a passion for understanding and advancing the craft of cooking.</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chef Alistair Reed" class="team-img">
+                            <div class="team-info">
+                                <h3 class="team-name">Chef Alistair Reed</h3>
+                                <p class="team-role">Founder & Lead Culinary Architect</p>
+                                <p class="team-desc">With 25 years in Michelin-starred kitchens across Europe and Asia, Alistair brings both technical precision and creative vision to the Codex.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dr. Elena Vasquez" class="team-img">
+                            <div class="team-info">
+                                <h3 class="team-name">Dr. Elena Vasquez</h3>
+                                <p class="team-role">Food Scientist & Flavor Analyst</p>
+                                <p class="team-desc">PhD in Food Chemistry, Elena ensures every technique in the Codex is scientifically sound and explains the molecular interactions behind flavor.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Marcus Chen" class="team-img">
+                            <div class="team-info">
+                                <h3 class="team-name">Marcus Chen</h3>
+                                <p class="team-role">Creative Director & Food Stylist</p>
+                                <p class="team-desc">Former art director turned culinary artist, Marcus translates complex techniques into visually stunning, easy-to-follow presentations.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Our Values -->
+                <section class="about-section">
+                    <h2>Our Core Values</h2>
+                    <p>These principles guide every aspect of the Metagastric Flavor Codex, from recipe development to community engagement:</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4>Scientific Rigor</h4>
+                            <p>Every technique and principle is grounded in verifiable science and thoroughly tested.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h4>Sustainable Practices</h4>
+                            <p>We prioritize seasonal, local ingredients and minimize waste in all our recipes.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h4>Culinary Diversity</h4>
+                            <p>We honor and incorporate techniques and ingredients from global culinary traditions.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Accessible Education</h4>
+                            <p>Complex concepts are broken down into understandable, actionable knowledge.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Community Focus</h4>
+                            <p>We learn from and grow with our global community of culinary enthusiasts.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Continuous Evolution</h4>
+                            <p>The Codex is a living document, updated with new discoveries and innovations.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Methodology -->
+                <section class="about-section">
+                    <h2>The Codex Methodology</h2>
+                    <p>What sets the Metagastric Flavor Codex apart is not just what we teach, but how we teach it. Our methodology is built on three interconnected layers:</p>
+                    
+                    <h3>1. Foundational Principles</h3>
+                    <p>Before any recipes, we establish understanding of core concepts: the Five Pillars of Flavor, the Science of Taste Perception, and the Principles of Heat Transfer. These fundamentals become the building blocks for all subsequent learning.</p>
+                    
+                    <h3>2. Technique Mastery</h3>
+                    <p>Rather than memorizing recipes, students master techniques that can be applied across countless dishes. Each technique is broken down into its component steps, with clear explanations of the "why" behind each action.</p>
+                    
+                    <h3>3. Creative Application</h3>
+                    <p>With principles understood and techniques mastered, cooks are encouraged to experiment and create. The Codex provides frameworks for innovation rather than rigid recipes, empowering personal culinary expression.</p>
+                    
+                    <p>This three-tiered approach ensures that learners not only replicate dishes but understand them deeply enough to adapt, innovate, and ultimately create their own signature culinary style.</p>
+                </section>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Codex By The Numbers</h3>
+                    <div class="fact-box">
+                        <div class="fact-number">35,000+</div>
+                        <div class="fact-text">Words of original culinary content</div>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <div class="fact-number">200+</div>
+                        <div class="fact-text">Tested recipes and techniques</div>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <div class="fact-number">40+</div>
+                        <div class="fact-text">Global cuisines referenced</div>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <div class="fact-number">5</div>
+                        <div class="fact-text">Years in development</div>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <div class="fact-number">50,000+</div>
+                        <div class="fact-text">Community members worldwide</div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Join Our Community</h3>
+                    <div class="contact-box">
+                        <h3>Become a Codex Practitioner</h3>
+                        <p>Connect with fellow culinary enthusiasts, share your creations, and participate in our weekly challenges.</p>
+                        <a href="#" class="btn">Join Now</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Download The Codex</h3>
+                    <div class="contact-box">
+                        <h3>Full Digital Edition</h3>
+                        <p>Get the complete Metagastric Flavor Codex with all recipes, techniques, and reference materials.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Upcoming Events</h3>
+                    <div class="fact-box">
+                        <h3>Live Workshop: Fermentation Fundamentals</h3>
+                        <p>June 15, 2023 | Virtual & In-Person</p>
+                        <a href="#" class="recipe-link" style="display: inline-block; margin-top: 10px;">Register <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Metagastric Flavor Codex</h3>
+                    <p>The definitive resource for culinary professionals and enthusiasts seeking to understand the science and art of flavor.</p>
+                    <p>With over 35,000 words of original content, the Codex represents years of research, testing, and refinement.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="index.html#recipes">Recipe Index</a>
+                    <a href="index.html#techniques">Culinary Techniques</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="index.html#philosophy">Our Philosophy</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Subscribe</h3>
+                    <p>Join our newsletter for weekly recipes, techniques, and culinary insights from the Codex.</p>
+                    <a href="#" class="btn" style="margin-top: 15px; padding: 10px 25px;">Subscribe Now</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <p>Follow our culinary journey and share your creations from the Codex.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Metagastric Flavor Codex. All rights reserved. | Culinary Alchemy Since 2018</p>
+                <p>This website contains approximately 35,000-37,000 words of unique culinary content, recipes, and techniques.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileNav').classList.remove('active');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

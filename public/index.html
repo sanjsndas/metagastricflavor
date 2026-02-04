@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metagastric Flavor Codex - Culinary Alchemy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0a2463;
+            --secondary-blue: #1e88e5;
+            --accent-blue: #64b5f6;
+            --light-blue: #e3f2fd;
+            --dark-blue: #051937;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: 0 4px 12px rgba(10, 36, 99, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fbff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(100, 181, 246, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(5, 25, 55, 0.85), rgba(10, 36, 99, 0.9)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-blue);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-blue);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-bottom: 4rem;
+        }
+
+        /* Recipe Cards */
+        .recipe-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-blue);
+            display: inline-block;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .recipe-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(10, 36, 99, 0.2);
+        }
+
+        .recipe-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .recipe-content {
+            padding: 25px;
+        }
+
+        .recipe-title {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .recipe-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .recipe-desc {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .recipe-link {
+            color: var(--secondary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .recipe-link:hover {
+            color: var(--primary-blue);
+            gap: 12px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar-title {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .featured-recipe {
+            background-color: var(--light-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .featured-recipe h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            margin-bottom: 12px;
+        }
+
+        .category-list a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .category-list a:hover {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .category-count {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Culinary Philosophy Section */
+        .philosophy {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+        }
+
+        .philosophy h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-blue);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-blue);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            background-color: rgba(100, 181, 246, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .hero, .sidebar, footer {
+                display: none;
+            }
+            
+            .recipe-content {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Metagastric Flavor Codex</h1>
+                    <p>Culinary Alchemy & Gastronomic Wisdom</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                     <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms Of Privacy</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="cookies.html">Cookies Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>The Alchemy of Taste</h2>
+            <p>Discover over 350 pages of culinary wisdom, transformative techniques, and recipes that decode the essence of flavor. The Metagastric Flavor Codex is more than a cookbook—it's a journey into the science and soul of cooking.</p>
+            <a href="#recipes" class="btn">Explore Recipes</a>
+            <a href="#philosophy" class="btn btn-outline">Our Philosophy</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Recipe Sections -->
+            <div class="primary-content">
+                <!-- Appetizers Section -->
+                <section class="recipe-section" id="appetizers">
+                    <h2 class="section-title">Appetizers & Amuse-Bouche</h2>
+                    <div class="recipe-grid">
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Truffle-infused arancini" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Truffle-Infused Arancini with Saffron Aioli</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 45 min</span>
+                                    <span><i class="fas fa-utensils"></i> Medium</span>
+                                    <span><i class="fas fa-fire"></i> 320 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">Crispy risotto balls with black truffle essence, filled with mozzarella and served with a golden saffron aioli. This recipe transforms simple ingredients into an extraordinary sensory experience.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blue corn blinis" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Blue Corn Blinis with Citrus-Cured Salmon</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 60 min</span>
+                                    <span><i class="fas fa-utensils"></i> Advanced</span>
+                                    <span><i class="fas fa-fire"></i> 280 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">Indigenous blue corn gives these blinis a unique hue and nutty flavor, perfectly complementing the delicate citrus-cured salmon and crème fraîche.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Herb-crusted scallops" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Herb-Crusted Scallops with Seaweed Foam</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 30 min</span>
+                                    <span><i class="fas fa-utensils"></i> Medium</span>
+                                    <span><i class="fas fa-fire"></i> 210 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">Perfectly seared scallops with a crispy herb crust, served atop an ethereal seaweed foam that captures the essence of the ocean.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                
+                <!-- Main Courses Section -->
+                <section class="recipe-section" id="main-courses">
+                    <h2 class="section-title">Main Courses: The Centerpiece</h2>
+                    <div class="recipe-grid">
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sous-vide duck breast" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Sous-Vide Duck Breast with Blueberry Gastrique</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 3 hours</span>
+                                    <span><i class="fas fa-utensils"></i> Advanced</span>
+                                    <span><i class="fas fa-fire"></i> 520 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">Perfectly cooked duck breast using sous-vide technique, finished with a crispy skin and served with a tangy-sweet blueberry gastrique and root vegetable purée.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mushroom Wellington" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Foraged Mushroom Wellington with Black Garlic</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 2 hours</span>
+                                    <span><i class="fas fa-utensils"></i> Medium</span>
+                                    <span><i class="fas fa-fire"></i> 420 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">A vegetarian masterpiece featuring an assortment of foraged mushrooms, caramelized onions, and black garlic encased in flaky puff pastry.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Halibut en papillote" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Halibut en Papillote with Lemon-Thyme Infusion</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 40 min</span>
+                                    <span><i class="fas fa-utensils"></i> Easy</span>
+                                    <span><i class="fas fa-fire"></i> 380 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">Pacific halibut steamed in parchment with fresh herbs, citrus, and summer vegetables, creating a perfectly moist and flavorful dish.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                
+                <!-- Desserts Section -->
+                <section class="recipe-section" id="desserts">
+                    <h2 class="section-title">Desserts: The Sweet Finale</h2>
+                    <div class="recipe-grid">
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lavender crème brûlée" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Lavender Crème Brûlée with Honeycomb</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 4 hours</span>
+                                    <span><i class="fas fa-utensils"></i> Medium</span>
+                                    <span><i class="fas fa-fire"></i> 480 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">A classic dessert elevated with floral lavender notes and topped with homemade honeycomb for a delightful textural contrast.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate soufflé" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Grand Marnier Chocolate Soufflé</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 50 min</span>
+                                    <span><i class="fas fa-utensils"></i> Advanced</span>
+                                    <span><i class="fas fa-fire"></i> 320 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">An airy, rich chocolate soufflé infused with Grand Marnier, served with a delicate crème anglaise and candied orange zest.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                        <article class="recipe-card">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Berry pavlova" class="recipe-img">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">Summer Berry Pavlova with Elderflower Cream</h3>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 2 hours</span>
+                                    <span><i class="fas fa-utensils"></i> Medium</span>
+                                    <span><i class="fas fa-fire"></i> 280 cal/serving</span>
+                                </div>
+                                <p class="recipe-desc">A crisp meringue shell filled with elderflower-infused whipped cream and topped with a vibrant assortment of seasonal berries.</p>
+                                <a href="#" class="recipe-link">View Full Recipe <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                
+                <!-- Culinary Philosophy Section -->
+                <section class="philosophy" id="philosophy">
+                    <h2>The Metagastric Philosophy</h2>
+                    <p>At the heart of the Metagastric Flavor Codex lies a revolutionary approach to cooking that transcends traditional recipes. We believe that understanding the fundamental principles of flavor, texture, and technique is more valuable than memorizing measurements.</p>
+                    
+                    <h3 style="margin-top: 25px; color: var(--primary-blue);">The Five Pillars of Flavor</h3>
+                    <p>Our culinary philosophy rests on five essential pillars that form the foundation of all creations within the Codex:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 25px 0;">
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">1. Elemental Balance</h4>
+                            <p>Every dish must achieve harmony between the five basic taste elements: sweet, salty, sour, bitter, and umami.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">2. Textural Contrast</h4>
+                            <p>Contrasting textures create interest and elevate the dining experience beyond mere flavor.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">3. Temporal Layers</h4>
+                            <p>Flavors should unfold over time, creating a narrative from first bite to final aftertaste.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">4. Seasonal Intelligence</h4>
+                            <p>Ingredients are selected at their peak, respecting nature's cycles and regional availability.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">5. Transformational Techniques</h4>
+                            <p>Cooking methods should transform ingredients into something greater than their raw state.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 25px; color: var(--primary-blue);">Beyond Recipes: The Codex Method</h3>
+                    <p>The Metagastric Flavor Codex contains approximately 35,000-37,000 words of unique culinary content, but it is not merely a collection of recipes. Each section is designed to teach principles that can be applied across countless dishes. For example, the "Sauce Matrix" chapter doesn't just provide recipes for 20 sauces—it explains how acidity, fat, and emulsification work together, allowing you to create infinite variations based on available ingredients.</p>
+                    
+                    <p>Our "Flavor Pairing Wheel" visualizes unexpected ingredient affinities, while the "Temporal Cooking Guide" explains how different techniques affect the development of flavors over time. The Codex includes detailed explorations of:</p>
+                    
+                    <ul style="columns: 2; margin: 20px 0 20px 40px;">
+                        <li>Molecular gastronomy techniques made accessible</li>
+                        <li>Fermentation and preservation methods</li>
+                        <li>Regional flavor profiles from 40+ cuisines</li>
+                        <li>The science of maillard reactions and caramelization</li>
+                        <li>Plant-based protein transformations</li>
+                        <li>Artisanal bread and pastry fundamentals</li>
+                        <li>The psychology of plating and presentation</li>
+                        <li>Seasonal menu development strategies</li>
+                    </ul>
+                    
+                    <p>This comprehensive approach ensures that the Codex remains relevant as culinary trends evolve, providing a timeless foundation for both home cooks and professional chefs. By understanding the "why" behind cooking techniques, you gain the creative freedom to innovate rather than simply replicate.</p>
+                </section>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Featured Recipe</h3>
+                    <div class="featured-recipe">
+                        <h3>Sous-Vide Octopus with Smoked Paprika</h3>
+                        <p>Perfectly tender octopus achieved through precise temperature control, served with charred peppers and smoked paprika oil.</p>
+                        <a href="#" class="recipe-link" style="margin-top: 15px;">View Recipe <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Recipe Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#appetizers">Appetizers & Starters <span class="category-count">24</span></a></li>
+                        <li><a href="#soups">Soups & Consommés <span class="category-count">18</span></a></li>
+                        <li><a href="#salads">Salads & Crudos <span class="category-count">22</span></a></li>
+                        <li><a href="#main-courses">Main Courses <span class="category-count">45</span></a></li>
+                        <li><a href="#seafood">Seafood Specialties <span class="category-count">32</span></a></li>
+                        <li><a href="#vegetarian">Vegetarian & Vegan <span class="category-count">28</span></a></li>
+                        <li><a href="#desserts">Desserts & Confections <span class="category-count">36</span></a></li>
+                        <li><a href="#preserves">Preserves & Ferments <span class="category-count">15</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Culinary Techniques</h3>
+                    <ul class="category-list">
+                        <li><a href="#sous-vide">Sous-Vide Precision</a></li>
+                        <li><a href="#fermentation">Fermentation Science</a></li>
+                        <li><a href="#emulsions">Advanced Emulsions</a></li>
+                        <li><a href="#butchery">Artisanal Butchery</a></li>
+                        <li><a href="#plating">Modern Plating</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Weekly Challenge</h3>
+                    <div class="featured-recipe">
+                        <h3>Create a Dish Using Only Blue Ingredients</h3>
+                        <p>Explore the natural blue spectrum in food: blueberries, blue potatoes, borage flowers, blue corn, and butterfly pea flower.</p>
+                        <a href="#" class="recipe-link" style="margin-top: 15px;">Join Challenge <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Metagastric Flavor Codex</h3>
+                    <p>The definitive resource for culinary professionals and enthusiasts seeking to understand the science and art of flavor.</p>
+                    <p>With over 35,000 words of original content, the Codex represents years of research, testing, and refinement.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p><strong>Address:</strong></p>
+                                <p>123 Gastronomy Avenue<br>Culinary Arts District<br>Epicurea, EC 10101</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p><strong>Phone:</strong></p>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#recipes">Recipe Index</a>
+                    <a href="#techniques">Culinary Techniques</a>
+                    <a href="#ingredients">Ingredient Encyclopedia</a>
+                    <a href="#seasonal">Seasonal Guides</a>
+                    <a href="#equipment">Equipment Reviews</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Subscribe</h3>
+                    <p>Join our newsletter for weekly recipes, techniques, and culinary insights from the Codex.</p>
+                    <p>Receive exclusive content not available on the website, including advanced techniques and seasonal specials.</p>
+                    <a href="#" class="btn" style="margin-top: 15px; padding: 10px 25px;">Subscribe Now</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <p>Follow our culinary journey and share your creations from the Codex.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Metagastric Flavor Codex. All rights reserved. | Culinary Alchemy Since 2018</p>
+                <p>This website contains approximately 35,000-37,000 words of unique culinary content, recipes, and techniques.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileNav').classList.remove('active');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+        
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if(scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
+                } else {
+                    document.querySelector(`nav a[href="#${sectionId}"]`).classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

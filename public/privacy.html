@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Privacy - Metagastric Flavor Codex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0a2463;
+            --secondary-blue: #1e88e5;
+            --accent-blue: #64b5f6;
+            --light-blue: #e3f2fd;
+            --dark-blue: #051937;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: 0 4px 12px rgba(10, 36, 99, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fbff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(100, 181, 246, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(5, 25, 55, 0.85), rgba(10, 36, 99, 0.9)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .legal-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 1024px) {
+            .legal-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .main-legal {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .legal-nav {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .legal-nav h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .legal-nav ul {
+            list-style: none;
+        }
+
+        .legal-nav li {
+            margin-bottom: 12px;
+        }
+
+        .legal-nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .legal-nav a:hover, .legal-nav a.active-section {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .legal-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+
+        .legal-section h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .legal-section h3 {
+            color: var(--secondary-blue);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .legal-section h4 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .legal-section ul, .legal-section ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .info-box {
+            background-color: var(--light-blue);
+            border-left: 4px solid var(--secondary-blue);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box p {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #eef7ff;
+        }
+
+        /* Update Banner */
+        .update-banner {
+            background-color: #fff8e1;
+            border: 1px solid #ffd54f;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .update-banner i {
+            color: #ff8f00;
+            font-size: 1.5rem;
+            margin-top: 3px;
+        }
+
+        .update-banner p {
+            margin-bottom: 0;
+        }
+
+        /* Contact Legal */
+        .contact-legal {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-legal h3 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-legal p {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-blue);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-blue);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            background-color: rgba(100, 181, 246, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-blue);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .main-legal {
+                padding: 25px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .legal-nav, footer, .update-banner {
+                display: none;
+            }
+            
+            .legal-section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Metagastric Flavor Codex</h1>
+                    <p>Culinary Alchemy & Gastronomic Wisdom</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="active">Terms & Privacy</a></li>
+                    <li><a href="cookies.html">Cookies Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Terms of Service & Privacy Policy</h1>
+            <p>Understanding our policies regarding your use of the Metagastric Flavor Codex website and how we protect your personal information.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Update Banner -->
+        <div class="update-banner">
+            <i class="fas fa-exclamation-circle"></i>
+            <div>
+                <p><strong>Last Updated:</strong> November 15, 2023</p>
+                <p>We've recently updated our Terms of Service and Privacy Policy to provide clearer information about data collection and usage. Please review these changes carefully.</p>
+            </div>
+        </div>
+
+        <!-- Legal Content -->
+        <div class="legal-content">
+            <!-- Main Content -->
+            <div class="main-legal">
+                <!-- Terms of Service Section -->
+                <section id="terms" class="legal-section">
+                    <h2>Terms of Service</h2>
+                    
+                    <div class="info-box">
+                        <p>By accessing and using the Metagastric Flavor Codex website, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our website.</p>
+                    </div>
+                    
+                    <h3>1. Use of Content</h3>
+                    <p>The Metagastric Flavor Codex contains approximately 35,000-37,000 words of unique culinary content, recipes, techniques, and intellectual property. All content is protected by copyright and intellectual property laws.</p>
+                    
+                    <h4>1.1. Permitted Use</h4>
+                    <p>You may:</p>
+                    <ul>
+                        <li>View and display content for personal, non-commercial use</li>
+                        <li>Print reasonable portions of recipes for personal kitchen use</li>
+                        <li>Share links to our content via social media with proper attribution</li>
+                        <li>Use recipes for personal cooking and experimentation</li>
+                    </ul>
+                    
+                    <h4>1.2. Prohibited Use</h4>
+                    <p>You may not:</p>
+                    <ul>
+                        <li>Republish material from this website in any format without permission</li>
+                        <li>Sell, rent, or sub-license material from the website</li>
+                        <li>Reproduce, duplicate, or copy content for commercial purposes</li>
+                        <li>Redistribute content from the Metagastric Flavor Codex</li>
+                        <li>Use any automated systems to access, scrape, or collect data from our website</li>
+                    </ul>
+                    
+                    <h3>2. User Accounts</h3>
+                    <p>When you create an account with us, you must provide accurate, complete, and current information. You are responsible for safeguarding your password and for all activities that occur under your account.</p>
+                    
+                    <h3>3. Intellectual Property Rights</h3>
+                    <p>The "Metagastric Flavor Codex" name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Metagastric Flavor Codex or its affiliates. You must not use such marks without prior written permission.</p>
+                    
+                    <h3>4. User-Generated Content</h3>
+                    <p>If you submit comments, recipe adaptations, or other content to our website:</p>
+                    <ul>
+                        <li>You retain ownership of your content</li>
+                        <li>You grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and display your content</li>
+                        <li>You warrant that your content does not violate any third-party rights</li>
+                    </ul>
+                    
+                    <h3>5. Disclaimers</h3>
+                    <p>The content on the Metagastric Flavor Codex is provided for informational and educational purposes only. We make no representations or warranties regarding:</p>
+                    <ul>
+                        <li>The accuracy or completeness of any recipe or technique</li>
+                        <li>The outcome of following any culinary instructions</li>
+                        <li>The safety of any cooking method for your specific circumstances</li>
+                        <li>The availability of ingredients in your region</li>
+                    </ul>
+                    
+                    <h3>6. Limitation of Liability</h3>
+                    <p>Metagastric Flavor Codex and its operators will not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from:</p>
+                    <ul>
+                        <li>Your use or inability to use the website</li>
+                        <li>Any errors or omissions in the content</li>
+                        <li>Any unauthorized access to or use of our servers</li>
+                        <li>Any interruption or cessation of transmission to or from our website</li>
+                    </ul>
+                    
+                    <h3>7. Termination</h3>
+                    <p>We may terminate or suspend your access to our website immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties.</p>
+                    
+                    <h3>8. Changes to Terms</h3>
+                    <p>We reserve the right to modify these terms at any time. We will provide notice of significant changes by posting the new Terms of Service on this page and updating the "Last Updated" date.</p>
+                </section>
+                
+                <!-- Privacy Policy Section -->
+                <section id="privacy" class="legal-section">
+                    <h2>Privacy Policy</h2>
+                    
+                    <div class="info-box">
+                        <p>Your privacy is important to us. This Privacy Policy explains how Metagastric Flavor Codex collects, uses, and protects your personal information when you use our website.</p>
+                    </div>
+                    
+                    <h3>1. Information We Collect</h3>
+                    
+                    <h4>1.1. Information You Provide</h4>
+                    <p>We collect information you voluntarily provide when you:</p>
+                    <ul>
+                        <li>Create an account</li>
+                        <li>Subscribe to our newsletter</li>
+                        <li>Submit comments or recipe reviews</li>
+                        <li>Contact us through our website</li>
+                        <li>Participate in surveys or culinary challenges</li>
+                    </ul>
+                    
+                    <h4>1.2. Automatically Collected Information</h4>
+                    <p>When you visit our website, we automatically collect certain information about your device, including:</p>
+                    <ul>
+                        <li>IP address</li>
+                        <li>Browser type and version</li>
+                        <li>Time zone setting</li>
+                        <li>Operating system and platform</li>
+                        <li>Information about your visit (pages viewed, time spent, etc.)</li>
+                    </ul>
+                    
+                    <h4>1.3. Cookies and Tracking Technologies</h4>
+                    <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information. For detailed information about the cookies we use, please see our <a href="cookies.html">Cookies Policy</a>.</p>
+                    
+                    <h3>2. How We Use Your Information</h3>
+                    <p>We use the information we collect for various purposes:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Purpose</th>
+                                <th>Legal Basis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>To provide and maintain our website</td>
+                                <td>Performance of contract</td>
+                            </tr>
+                            <tr>
+                                <td>To notify you about changes to our website</td>
+                                <td>Performance of contract</td>
+                            </tr>
+                            <tr>
+                                <td>To allow you to participate in interactive features</td>
+                                <td>Consent</td>
+                            </tr>
+                            <tr>
+                                <td>To provide customer support</td>
+                                <td>Legitimate interests</td>
+                            </tr>
+                            <tr>
+                                <td>To gather analysis to improve our website</td>
+                                <td>Legitimate interests</td>
+                            </tr>
+                            <tr>
+                                <td>To monitor usage of our website</td>
+                                <td>Legitimate interests</td>
+                            </tr>
+                            <tr>
+                                <td>To detect, prevent and address technical issues</td>
+                                <td>Legitimate interests</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>3. Data Sharing and Disclosure</h3>
+                    
+                    <h4>3.1. Service Providers</h4>
+                    <p>We may share your information with third-party service providers who perform services on our behalf, such as:</p>
+                    <ul>
+                        <li>Website hosting and maintenance</li>
+                        <li>Email delivery services</li>
+                        <li>Analytics and performance monitoring</li>
+                    </ul>
+                    
+                    <h4>3.2. Legal Requirements</h4>
+                    <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).</p>
+                    
+                    <h3>4. Data Security</h3>
+                    <p>We implement appropriate technical and organizational security measures designed to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                    
+                    <h3>5. Data Retention</h3>
+                    <p>We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
+                    
+                    <h3>6. Your Data Protection Rights</h3>
+                    <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Access</h4>
+                            <p>You have the right to request copies of your personal data.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Rectification</h4>
+                            <p>You have the right to request correction of inaccurate information.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Erasure</h4>
+                            <p>You have the right to request deletion of your personal data.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Restrict Processing</h4>
+                            <p>You have the right to request restriction of processing your personal data.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Object</h4>
+                            <p>You have the right to object to our processing of your personal data.</p>
+                        </div>
+                        <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Right to Data Portability</h4>
+                            <p>You have the right to request transfer of your data to another organization.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>7. Children's Privacy</h3>
+                    <p>Our website is not intended for individuals under the age of 16. We do not knowingly collect personal information from children under 16. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>
+                    
+                    <h3>8. International Data Transfers</h3>
+                    <p>Your information may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ from those of your jurisdiction.</p>
+                    
+                    <h3>9. Changes to This Privacy Policy</h3>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+                </section>
+                
+                <!-- Contact Legal Section -->
+                <div class="contact-legal">
+                    <h3>Questions About Our Policies?</h3>
+                    <p>If you have any questions about our Terms of Service or Privacy Policy, please don't hesitate to contact us. We're committed to transparency and will respond to your inquiries promptly.</p>
+                    <a href="contact.html" class="btn">Contact Us</a>
+                </div>
+            </div>
+            
+            <!-- Sidebar Navigation -->
+            <aside class="legal-nav">
+                <h3>Legal Navigation</h3>
+                <ul>
+                    <li><a href="#terms" class="active-section"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                    <li><a href="#privacy"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                </ul>
+                
+                <h3 style="margin-top: 30px;">Related Documents</h3>
+                <ul>
+                    <li><a href="cookies.html"><i class="fas fa-cookie-bite"></i> Cookies Policy</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Return to Home</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+                
+                <div style="background-color: var(--light-blue); padding: 20px; border-radius: 10px; margin-top: 30px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Quick Summary</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;">These documents govern your use of our website and explain how we handle your personal information. Please read them carefully.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Metagastric Flavor Codex</h3>
+                    <p>The definitive resource for culinary professionals and enthusiasts seeking to understand the science and art of flavor.</p>
+                    <p>With over 35,000 words of original content, the Codex represents years of research, testing, and refinement.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p><strong>Address:</strong></p>
+                                <p>123 Gastronomy Avenue<br>Culinary Arts District<br>Epicurea, EC 10101</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal & Policies</h3>
+                    <a href="#" class="active">Terms of Service</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="cookies.html">Cookies Policy</a>
+                    <a href="#copyright">Copyright Information</a>
+                    <a href="#disclaimer">Disclaimer</a>
+                    <a href="#accessibility">Accessibility Statement</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Need Help?</h3>
+                    <p>If you have questions about our policies or how we handle your information, please contact our privacy team.</p>
+                    <p>We typically respond to inquiries within 2-3 business days.</p>
+                    <a href="contact.html" class="btn" style="margin-top: 15px; padding: 10px 25px;">Contact Privacy Team</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <p>Follow our culinary journey and share your creations from the Codex.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Metagastric Flavor Codex. All rights reserved. | Culinary Alchemy Since 2018</p>
+                <p>This website contains approximately 35,000-37,000 words of unique culinary content, recipes, and techniques.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Don't intercept internal page navigation
+                if(this.getAttribute('href') === '#' || this.classList.contains('btn')) return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active section in legal nav
+                    document.querySelectorAll('.legal-nav a').forEach(link => {
+                        link.classList.remove('active-section');
+                    });
+                    this.classList.add('active-section');
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileNav').classList.remove('active');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+                    document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+        
+        // Highlight current section in legal nav when scrolling
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.legal-section');
+            const navLinks = document.querySelectorAll('.legal-nav a[href^="#"]');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-section');
+                if(link.getAttribute('href') === currentSection) {
+                    link.classList.add('active-section');
+                }
+            });
+        });
+        
+        // Initialize active section on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            if(hash) {
+                const targetElement = document.querySelector(hash);
+                if(targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                    
+                    // Update active link
+                    document.querySelectorAll('.legal-nav a').forEach(link => {
+                        link.classList.remove('active-section');
+                        if(link.getAttribute('href') === hash) {
+                            link.classList.add('active-section');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
